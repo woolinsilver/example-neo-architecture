@@ -1,0 +1,24 @@
+---
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  dotnet-library-publish:
+    name: .NET Library Publish
+    uses: sg-studios-jersey/github-actions/.github/workflows/dotnet-library-publish.yaml@v1
+    secrets:
+      nexus-user-token-username: ${{ secrets.NEXUS_USER_TOKEN_USERNAME }}
+      nexus-user-token-password: ${{ secrets.NEXUS_USER_TOKEN_PASSWORD }}
+      snyk-token: ${{ secrets.SNYK_TOKEN }}
+      nuget-api-key: ${{ secrets.NUGET_API_KEY }}

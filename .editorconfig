@@ -1,0 +1,108 @@
+root = true
+
+###############################################################################
+# All files should be UTF-8 with LF line endings unless overridden below.
+###############################################################################
+
+[*]
+end_of_line = lf
+charset = utf-8
+
+###############################################################################
+# .NET files must be CRLF for historical reasons.
+###############################################################################
+
+[*.{bat,cs,csproj,props,pubxml,resx,sln,targets}]
+end_of_line = crlf
+
+###############################################################################
+# All files should use modern whitespace unless overridden below.
+###############################################################################
+
+[{*.{css,htm,html,ini,js,json,jsx,mjs,sh,ts,tsx,txt,yaml,yml},Dockerfile}]
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+###############################################################################
+# Markdown
+###############################################################################
+
+[*.md]
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = false
+
+###############################################################################
+# XML files
+###############################################################################
+
+[*.xml]
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = false
+
+###############################################################################
+# MSBuild files
+###############################################################################
+
+[*.{csproj,props,targets}]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = false
+
+###############################################################################
+# CSharp
+###############################################################################
+
+[*.cs]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# no preference regarding var keyword
+# SG Studios house style is to not use var keyword
+csharp_style_var_for_built_in_types = false:none
+csharp_style_var_when_type_is_apparent = false:none
+csharp_style_var_elsewhere = false:none
+
+# prefer file-scoped namespaces
+csharp_style_namespace_declarations = file_scoped:warning
+
+# prefer primary constructors
+csharp_style_prefer_primary_constructors = true:suggestion
+
+# prefer top-level statements
+csharp_style_prefer_top_level_statements = true:suggestion
+
+# prefer "if (obj is Dog dog) dog.bark()" to manual casting
+csharp_style_pattern_matching_over_is_with_cast_check = true:warning
+csharp_style_pattern_matching_over_as_with_null_check = true:warning
+
+# Diagnostics are warnings, unless overriden below.
+dotnet_diagnostic.severity = warning
+
+# Standardise the order of 'using' directives
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+
+# Downgrade IDE0055 (“Fix formatting”) to a suggestion.
+# However, formatting will still break the build on GitHub Actions.
+# Run "dotnet format" before pushing anything to GitHub.
+dotnet_diagnostic.IDE0055.severity = suggestion
+
+# Downgrade IDE0044 (“Make field readonly”) to a suggestion
+dotnet_diagnostic.IDE0044.severity = suggestion
+
+# Disable CA1848 ("Use the LoggerMessage delegates")
+# This rule introduces excessive boilerplate for logging.
+# It's only useful on hot code paths in extremely high-performance systems.
+dotnet_diagnostic.CA1848.severity = none
+
+# Disable CA1859 ("Use concrete types when possible for improved performance")
+# This rule defeats the purpose of having interfaces.
+dotnet_diagnostic.CA1859.severity = none

@@ -1,0 +1,75 @@
+###############################################################################
+# SG Studios have .NET projects and Windows machines,
+# therefore we must be very careful with line endings.
+###############################################################################
+
+# unless overriden below,
+# - auto-detect text/binary
+# - use LF for text files
+* text=auto eol=lf
+
+# CRLF files
+*.bat text eol=crlf
+*.cs text eol=crlf
+*.csproj text eol=crlf
+*.props text eol=crlf
+*.pubxml text eol=crlf
+*.resx text eol=crlf
+*.sln text eol=crlf
+
+# LF files
+Dockerfile text eol=lf
+*.atlas text eol=lf
+*.babelrc text eol=lf
+*.config text eol=lf
+*.css text eol=lf
+*.dockerignore text eol=lf
+*.drawio text eol=lf
+*.editorconfig text eol=lf
+*.eslintignore text eol=lf
+*.htm text eol=lf
+*.html text eol=lf
+*.gitattributes text eol=lf
+*.gitignore text eol=lf
+*.gitkeep text eol=lf
+*.ini text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.map text eol=lf
+*.md text eol=lf
+*.mjs text eol=lf
+*.npmrc text eol=lf
+*.prettierrc text eol=lf
+*.prettierignore text eol=lf
+*.sh text eol=lf
+*.slnx text eol=lf
+*.spine text eol=lf
+*.svg text eol=lf
+*.trivyignore text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.txt text eol=lf
+*.webmanifest text eol=lf
+*.xml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+
+# binary files
+*.7z     binary
+*.dll    binary
+*.exe    binary
+*.gif    binary
+*.ico    binary
+*.jpeg   binary
+*.jpg    binary
+*.mp3    binary
+*.ogg    binary
+*.otf    binary
+*.pdf    binary
+*.png    binary
+*.tgz    binary
+*.ttf    binary
+*.webp   binary
+*.xlsx   binary
+*.zip    binary

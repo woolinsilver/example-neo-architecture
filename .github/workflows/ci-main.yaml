@@ -1,0 +1,23 @@
+---
+name: CI — Main Branch
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  dotnet-library-build:
+    name: .NET Library Build
+    uses: sg-studios-jersey/github-actions/.github/workflows/dotnet-library-build.yaml@v1
+    secrets:
+      nexus-user-token-username: ${{ secrets.NEXUS_USER_TOKEN_USERNAME }}
+      nexus-user-token-password: ${{ secrets.NEXUS_USER_TOKEN_PASSWORD }}
+      snyk-token: ${{ secrets.SNYK_TOKEN }}

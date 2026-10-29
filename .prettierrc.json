@@ -1,0 +1,13 @@
+{
+  "printWidth": 160,
+  "overrides": [
+    {
+      "files": "*.{csproj,props,targets,xml}",
+      "options": {
+        "parser": "xml",
+        "xmlSelfClosingSpace": true,
+        "xmlWhitespaceSensitivity": "ignore"
+      }
+    }
+  ]
+}

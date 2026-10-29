@@ -1,0 +1,48 @@
+<Project>
+    <PropertyGroup Label="Legal">
+        <Company>Scientific Games</Company>
+        <Authors>SG Studios</Authors>
+        <Copyright>Copyright $([System.DateTime]::Now.Year) $(Company)</Copyright>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Repository">
+        <RepositoryUrl>https://github.com/sg-studios-jersey/dotnet-template</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryBranch>main</RepositoryBranch>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <SolutionRoot>$(MSBuildThisFileDirectory)</SolutionRoot>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Build">
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <Deterministic>true</Deterministic>
+        <DebugType>Embedded</DebugType>
+        <EmbedAllSources>true</EmbedAllSources>
+        <NoWarn>$(NoWarn);NU1507;NU1605</NoWarn>
+    </PropertyGroup>
+
+    <!-- Copy README and LICENSE into each project -->
+    <ItemGroup>
+        <None Include="$(SolutionRoot)README.md" Pack="true" PackagePath="" />
+        <None Include="$(SolutionRoot)LICENSE.txt" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <!-- Common tooling and analyzers -->
+    <ItemGroup>
+        <PackageReference Include="GitVersion.MsBuild" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!--
+        Force all projects to depend directly on System.Collections.Immutable v8 ,
+        this prevents GitVersion.MsBuild transitively bringing in v9
+    -->
+    <ItemGroup>
+        <PackageReference Include="System.Collections.Immutable" />
+    </ItemGroup>
+</Project>

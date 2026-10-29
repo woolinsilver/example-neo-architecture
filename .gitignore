@@ -1,0 +1,35 @@
+###############################################################################
+# SG Studios
+###############################################################################
+
+# macOS thumbnails
+.DS_Store
+
+# Windows thumbnails
+Thumbs.db
+desktop.ini
+
+# JetBrains
+.idea/
+.ai/
+.junie/
+
+# Visual Studio
+.vs/
+
+# Visual Studio Code
+.vscode/
+
+###############################################################################
+# .NET
+###############################################################################
+
+# JetBrains
+*.DotSettings.user
+
+# Visual Studio
+*.csproj.user
+
+# MSBuild files
+bin/
+obj/

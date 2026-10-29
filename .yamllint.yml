@@ -1,0 +1,17 @@
+---
+# regrettably, this file must have .yml extension, rather than .yaml
+# https://megalinter.io/latest/descriptors/yaml_yamllint/
+extends: default
+rules:
+  braces:
+    max-spaces-inside: 1
+  new-lines:
+    level: warning
+    type: unix
+  line-length: disable
+  comments:
+    min-spaces-from-content: 1
+  truthy: disable
+ignore: |
+  node_modules
+  pnpm-lock.yaml

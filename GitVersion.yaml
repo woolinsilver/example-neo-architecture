@@ -1,0 +1,14 @@
+---
+workflow: GitHubFlow/v1
+mode: ContinuousDelivery
+
+# Set this to the version you intend to release next.
+# This influences how GitVersion calculates pre-release versions (for commits on the main branch).
+
+# By default, GitVersion takes the most recent tag and bumps the PATCH version.
+# For example, after releasing 1.2.3, the next commits on main would be pre-releases of 1.2.4.
+
+# To bump the MAJOR or MINOR instead, set a higher version here.
+# This lets you prepare for 1.3.0 or 2.0.0 before tagging the release.
+
+next-version: 0.1.0

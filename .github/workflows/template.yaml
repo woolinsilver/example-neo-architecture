@@ -1,0 +1,28 @@
+---
+name: Copy Source to Initializer Project
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - initialize-macos
+      - initialize-windows.exe
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-template
+  cancel-in-progress: true
+
+jobs:
+  copy-template-source-to-initializer-project:
+    name: Copy Template Source to Initializer Project
+    if: github.event.repository.name == 'dotnet-template'
+    uses: sg-studios-jersey/github-actions/.github/workflows/copy-template-source-to-initializer-project.yaml@v1
+    with:
+      target-repository: sg-studios-jersey/dotnet-template-initializer
+    secrets:
+      sg-studios-bot-client-id: ${{ secrets.SG_STUDIOS_BOT_CLIENT_ID }}
+      sg-studios-bot-private-key: ${{ secrets.SG_STUDIOS_BOT_PRIVATE_KEY }}

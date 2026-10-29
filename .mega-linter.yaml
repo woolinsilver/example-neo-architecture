@@ -1,0 +1,16 @@
+---
+DISABLE:
+  - COPYPASTE
+  - SPELL
+
+DISABLE_LINTERS:
+  # this linter believes all our GitHub Enterprise URLs are 404
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+  # this linter disagrees with Prettier
+  - MARKDOWN_MARKDOWN_TABLE_FORMATTER
+  # this linter is too slow
+  - JSON_V8R
+  # this linter is too slow
+  - YAML_V8R
+  # this linter is too slow, and is inferior to REPOSITORY_TRIVY
+  - REPOSITORY_GRYPE
