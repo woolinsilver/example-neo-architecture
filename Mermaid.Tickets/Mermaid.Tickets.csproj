@@ -2,6 +2,8 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <OutputType>Library</OutputType>
-        <PackageId>SGStudios.Build.TemplateProject</PackageId>
     </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Framework\Framework.csproj" />
+    </ItemGroup>
 </Project>

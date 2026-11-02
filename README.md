@@ -1,162 +1,63 @@
-# dotnet-template
+# example-neo-architecture
 
-| Workflow          | Status                                                                                                                                                                                                    |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CI - Main Branch  | [![CI — Main Branch](https://github.com/sg-studios-jersey/dotnet-template/actions/workflows/ci-main.yaml/badge.svg)](https://github.com/sg-studios-jersey/dotnet-template/actions/workflows/ci-main.yaml) |
-| CI - Pull Request | [![CI — Pull Request](https://github.com/sg-studios-jersey/dotnet-template/actions/workflows/ci-pr.yaml/badge.svg)](https://github.com/sg-studios-jersey/dotnet-template/actions/workflows/ci-pr.yaml)    |
-| Release           | [![Release](https://github.com/sg-studios-jersey/dotnet-template/actions/workflows/release.yaml/badge.svg)](https://github.com/sg-studios-jersey/dotnet-template/actions/workflows/release.yaml)          |
+This demonstrates a proposed architecture for game development.
 
-A template repository for .NET Class Library projects at SG Studios.
+There is a Framework project, similar to Neo.
 
-Includes pre-configured GitHub Workflows, GitVersion, etc.
+There is an example Mermaid game, with Tickets and Profile projects.
+
+In reality, each project would be in a separate solution.
+
+---
+## Features
+
+### Reflection
+
+At start time, the Game Engine would reflectively construct `MermaidEntryPoint`.
+
+After that, there is no reflection!
+
+The `IPluginLoader` supplied by the Game Engine is not needed.
+
+Everything is done with normal project references and inheritance.
+
+### Dependency Injection (DI)
+
+The projects can be developed and tested independently, in separate solutions.
+
+DI is used to bring everything together at runtime.
+
+The Tickets and Profile projects each have an `IModule` which allows them to wire in anything they want.
+
+### Generics
+
+Generics are used extensively to make game development easier.
+
+Notice that `MermaidTicketFactory` enjoys access to `IMermaidFeatures`, `MermaidTier` etc. without any casting.
 
 ---
 
-## Requirements
+## Framework
 
-- .NET SDK 8.0.419
-- Bash shell
-- GitHub CLI
+### `EarlyPay`
 
-## Getting Started
+The class `EarlyPay` extends `GameLogicBase` (from SGStudios.LocalPrize.GameLogic) and simplifies it:
 
-### Create Repository
+- to require only a single `ExecuteAsync` method
+- to remove the concept of database state
 
-Create a new repository on GitHub using **dotnet-template** as a repository template.
+### `EntryPoint`
 
-Clone your new repository:
+The game must extend this to provide a concrete entry point for the Game Engine to reflectively construct.
 
-```shell
-gh repo clone sg-studios-jersey/your-repository-name
-cd your-repository-name
-```
+The subtype must provide concrete implementations of `IProfile` and `ITicketFactory`.
 
-### Run Initializer Program
+This class handles all DI wiring.
 
-#### Windows
+This class receives requests from the Game Engine and passes them to services managed by the DI container.
 
-Run `initialize-windows.exe` included in the root of your new repository.
+### `GameLogicService`
 
-#### macOS
+`GameLogicService` is the heart of the framework.
 
-Run `initialize-macos` included in the root of your new repository.
-
-Note that because the macOS executable is not signed, you will first need to run the following commands:
-
-```shell
-codesign --force --deep --sign - initialize-macos
-xattr -dr com.apple.quarantine initialize-macos
-chmod +x initialize-macos
-```
-
-### Run Build Script
-
-```shell
-./build.sh
-```
-
-> **Important**: Always run the build script before committing changes to GitHub!
-
----
-
-## 🚀 Developer Workflow
-
-We follow **GitHub Flow**.
-
-We prefer linear history on the `main` branch.
-
-We prefer Pull Requests with squash merging.
-
-### Branch Management
-
-1. Create a new feature branch:
-
-```shell
-git switch main
-git pull
-git switch --create your-branch-name
-git push
-```
-
-Branch names should be short, and `lower-kebab-case`, for example:
-
-- `fix-prizes`
-- `load-testing`
-- `fabien-experiment`
-
-### Pull Requests
-
-Create a PR when your changes are ready:
-
-```shell
-gh pr create
-```
-
-The title of your Pull Request will become the Git commit message on `main`.
-
-Guidelines:
-
-- Use the imperative present tense ("**Add** authentication", not "Added" or "Adds")
-- Start with a capital letter, but do not end with a full stop
-
-_When this Pull Request is merged, it will..._
-
-> Fix incorrect prize calculation
-
-### Post-Merge Cleanup
-
-After your PR is merged:
-
-```shell
-git switch main
-git pull
-git branch -d your-branch-name
-git remote prune origin
-```
-
-## Semantic Versioning ("SemVer")
-
-**MAJOR.MINOR.PATCH**
-
-Version rules:
-
-- MAJOR: Breaking changes (incompatible API)
-- MINOR: New features (backwards-compatible)
-- PATCH: Bug fixes and internal changes
-
-Pre-1.0.0:
-
-- Breaking changes allowed
-- Not recommended for production
-
-## GitVersion
-
-Version numbers are dictated entirely by GitVersion.
-
-### Releases
-
-Each tag on the `main` branch will create a release.
-
-The version number is dictated by the tag, for example `1.2.3`.
-
-A NuGet package will be created and deployed to Nexus.
-
-Other developers may depend on the package:
-
-```shell
-dotnet add package SGStudios.YourPackage --version 1.2.3
-```
-
-### Pre-releases
-
-Each commit on the `main` branch creates a pre-release.
-
-The version number is computed by GitVersion, for example `1.2.4-1`.
-
-A NuGet package will be created and deployed to GitHub Artifacts.
-
-GitHub will delete the NuGet package after 90 days !!!
-
-GitVersion assumes the next release will bump the PATCH.
-
-If you wish to instead bump the MAJOR or MINOR versions, edit `next-version` in `GitVersion.yaml`.
+It uses the injected `IProfile` and `ITicketFactory` to satisfy requests received from the Game Engine.

@@ -1,0 +1,40 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Framework.csproj", "{5068E668-7A53-4F83-A47E-361473C706E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{D97EE9F2-C122-4BCC-B474-5EAF1DD3C7BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mermaid.Tickets", "Mermaid.Tickets\Mermaid.Tickets.csproj", "{139B1F3B-8146-4215-ABB5-7B235BC1AB5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mermaid.Profile", "Mermaid.Profile\Mermaid.Profile.csproj", "{467995D2-3B67-4DA7-833D-E231F35DBBFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5068E668-7A53-4F83-A47E-361473C706E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5068E668-7A53-4F83-A47E-361473C706E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5068E668-7A53-4F83-A47E-361473C706E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5068E668-7A53-4F83-A47E-361473C706E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97EE9F2-C122-4BCC-B474-5EAF1DD3C7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97EE9F2-C122-4BCC-B474-5EAF1DD3C7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97EE9F2-C122-4BCC-B474-5EAF1DD3C7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97EE9F2-C122-4BCC-B474-5EAF1DD3C7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139B1F3B-8146-4215-ABB5-7B235BC1AB5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139B1F3B-8146-4215-ABB5-7B235BC1AB5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139B1F3B-8146-4215-ABB5-7B235BC1AB5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139B1F3B-8146-4215-ABB5-7B235BC1AB5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467995D2-3B67-4DA7-833D-E231F35DBBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467995D2-3B67-4DA7-833D-E231F35DBBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467995D2-3B67-4DA7-833D-E231F35DBBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467995D2-3B67-4DA7-833D-E231F35DBBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

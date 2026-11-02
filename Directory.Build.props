@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <PropertyGroup Label="Repository">
-        <RepositoryUrl>https://github.com/sg-studios-jersey/dotnet-template</RepositoryUrl>
+        <RepositoryUrl>https://github.com/sg-studios-jersey/example-neo-architecture</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <RepositoryBranch>main</RepositoryBranch>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>

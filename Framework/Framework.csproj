@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <IsPackable>true</IsPackable>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+        <PackageReference Include="Microsoft.Extensions.Logging" />
+        <PackageReference Include="SGStudios.LocalPrize.GameLogic" />
+        <PackageReference Include="SGStudios.Money" />
+        <PackageReference Include="SGStudios.Progressive" />
+        <PackageReference Include="SGStudios.Primitives" />
+        <PackageReference Include="SGStudios.Random" />
+    </ItemGroup>
+</Project>
