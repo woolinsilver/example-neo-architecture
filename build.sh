@@ -27,7 +27,7 @@ function main() {
 
   print_header
 
-  run "check network" check_network_connection
+  #  run "check network" check_network_connection
   run "clean project" ./clean.sh
 
   run "dotnet tool restore" dotnet tool restore
