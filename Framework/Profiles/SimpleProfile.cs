@@ -2,6 +2,14 @@ using Framework.Domain;
 
 namespace Framework.Profiles;
 
+/// <summary>
+/// <para>
+/// This is a profile which maps stakes (per ticket) to paytables.
+/// </para>
+/// <para>
+/// You could have a more complicated profile which implemented happy hour.
+/// </para>
+/// </summary>
 public abstract class SimpleProfile<TTier> : ProfileBase<TTier> where TTier : Tier
 {
     private readonly IReadOnlyDictionary<decimal, Paytable<TTier>> _paytables;

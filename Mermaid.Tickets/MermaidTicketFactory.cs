@@ -5,6 +5,15 @@ using static Mermaid.Tickets.MermaidSymbol;
 
 namespace Mermaid.Tickets;
 
+// This is wired into DI as a singleton, so it's long-lived.
+//
+// We can ask DI for other things we need, for example
+// - something like IMermaidFeatures provided by the profile, or
+// - some other services from Tickets project.
+//
+// We can calculate stuff (like combos) during initialization and hold it in memory.
+// We could read "offline tickets" from disk and hold those in memory.
+
 public class MermaidTicketFactory(IMermaidFeatures features) : ITicketFactory<MermaidTier, MermaidTicket>
 {
     private static readonly MermaidSymbol[][] Losers = GenerateLosingSymbols();

@@ -8,7 +8,6 @@ There is an example Mermaid game, with Tickets and Profile projects.
 
 In reality, each project would be in a separate solution.
 
----
 ## Features
 
 ### Reflection

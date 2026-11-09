@@ -3,6 +3,14 @@ using Mermaid.Tickets;
 
 namespace Mermaid.Profile;
 
+// Note:
+//
+// Tier.Identifier would go to the frontend via Ticket.Tier,
+// it's part of the contract with the frontend.
+//
+// MermaidTier.Outcome will go to MermaidTicketFactory,
+// it's purely an internal detail of the backend.
+
 public static class MermaidPaytable
 {
     public static readonly Paytable<MermaidTier> Instance = new()
